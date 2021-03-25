@@ -22,7 +22,7 @@ export class MenuOptions {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('sidenav', { static: false }) sidenav: MatSidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
   title = 'app';
 
   events: string[] = []; // for sidenav
