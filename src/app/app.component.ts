@@ -1,6 +1,6 @@
 import { registerLocaleData } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { TranslateService } from '@ngx-translate/core';
 import localeBg from '@angular/common/locales/bg'; // to register bg
 import { User } from './models/user';
