@@ -1,0 +1,31 @@
+/* 'Open Sans' font from Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+:host {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.mat-form-field {
+    width: 100%;
+    min-width: auto;
+}
+
+mat-card-title,
+mat-card-content {
+    display: flex;
+    justify-content: center;
+}
+
+.error {
+    width: 100%;
+    height: auto;
+    margin: 5px;
+    min-width: auto;
+    color: white;
+    text-align: center;
+    background-color: red;
+}

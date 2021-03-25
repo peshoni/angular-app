@@ -1,0 +1,8 @@
+{
+    "app": {
+        "welcome": "welcome",
+        "login": "login",
+        "username": "username",
+        "password": "password"
+    }
+}
