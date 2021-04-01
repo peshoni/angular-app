@@ -1,10 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { routing } from "./app.routing";
+//import { routing } from "./app.routing";
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './user/login/login.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -15,20 +15,25 @@ import { TokenInterceptor } from "./core/interceptor";
 import { Valido } from './core/valido';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './core/auth-guard-service';
+import { AppInjector } from './core/app-injector';
+import { AuthService } from './core/auth-service';
+import { RouterModule } from '@angular/router';
+import { PrintLayoutComponent } from './print/print-layout/print-layout.component';
+import { InvoiceComponent } from './print/invoice/invoice.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PrintLayoutComponent,
+    InvoiceComponent
   ],
   imports: [
-    routing,
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-
     // ngx-translate and the loader module
     TranslateModule.forRoot({
       loader: {
@@ -38,11 +43,12 @@ import { AuthGuardService } from './core/auth-guard-service';
       }
     }),
     HttpClientModule,
-
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     Valido,
+    AuthService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
@@ -54,7 +60,15 @@ import { AuthGuardService } from './core/auth-guard-service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(injector: Injector) {
+
+    AppInjector.setInjector(injector);
+
+  }
+
+}
 
 
 //required for AOT compilation

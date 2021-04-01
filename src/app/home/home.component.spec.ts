@@ -1,5 +1,10 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AppComponent } from '../app.component';
+import { AuthService } from '../core/auth-service';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -8,9 +13,22 @@ describe('HomeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      imports: [
+        RouterTestingModule,
+        TranslateModule.forRoot({
+          loader: {
+            provide: TranslateLoader,
+            useClass: TranslateFakeLoader
+          }
+        })
+      ],
+      declarations: [HomeComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [AppComponent, AuthService, HttpClient,
+        HttpHandler,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -209,7 +209,7 @@ export class Valido {
     /**
      * Minimum min characters, at least one uppercase letter, one lowercase letter, one number and one special character:
      */
-    validatePassowrd(min: number, max: number) {
+    validatePassword(min: number, max: number) {
         return [
             Validators.required,
             Validators.minLength(min),

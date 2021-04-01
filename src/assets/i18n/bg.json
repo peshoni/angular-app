@@ -3,6 +3,8 @@
         "welcome": "добре дошли",
         "login": "вход",
         "username": "потребителско име",
-        "password": "парола"
+        "password": "парола",
+        "password_required": "паролата е задължителна",
+        "username_required": "потребителското име е задължително"
     }
 }

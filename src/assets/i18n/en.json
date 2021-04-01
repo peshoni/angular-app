@@ -3,6 +3,8 @@
         "welcome": "welcome",
         "login": "login",
         "username": "username",
-        "password": "password"
+        "password": "password",
+        "password_required": "password is required",
+        "username_required": "username is required"
     }
 }

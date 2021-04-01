@@ -2,7 +2,6 @@
   <button class="app-bar-button" (click)="sidenav.toggle()" id="app-menu">
     <mat-icon>menu</mat-icon>
   </button>
-  {{app}}
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav *ngIf="user?.loggedIn === true" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
@@ -21,7 +20,7 @@
         </a>
         <mat-nav-list *ngIf="option.expanded" style="padding-top: 0;">
           <div *ngFor="let sub of option.submenus">
-            <a class="sub-menu-section">
+            <a class="sub-menu-section" [routerLink]="sub.route">
               <mat-icon color="primary" style="margin: 5px;">{{sub.matIcon}}</mat-icon>
               <span>{{sub.label}}</span>
             </a>

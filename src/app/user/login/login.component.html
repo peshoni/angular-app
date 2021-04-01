@@ -4,14 +4,19 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
             <mat-form-field>
                 <input matInput placeholder="{{'app.username' | translate}}" type="text" formControlName="username"
-                    id="username" autocomplete="off">
+                    id="username" autocomplete="off" required>
             </mat-form-field>
             <div class="error"
                 *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">
                 {{'app.username_required' | translate}}</div>
             <mat-form-field>
-                <input matInput placeholder="{{'app.password' | translate}}" type="password" class="form-control"
-                    formControlName="password" id="pwd" autocomplete="off">
+                <input matInput placeholder="{{'app.password' | translate}}" type="{{passFieldType}}"
+                    class="form-control" formControlName="password" id="pwd" autocomplete="off" required
+                    matTooltip="Поне по една цифра, малка буква, голяма буква и специален символ. Минимлна дължина 6 символа.">
+                <button type="button" (click)="changePassType()" matSuffix mat-icon-button>
+                    <mat-icon *ngIf="passFieldType == 'password'">visibility_off</mat-icon>
+                    <mat-icon *ngIf="passFieldType == 'text'">visibility</mat-icon>
+                </button>
             </mat-form-field>
             <div class="error"
                 *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">

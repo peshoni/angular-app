@@ -1,5 +1,5 @@
-import { Injector } from "@angular/core";
-
+import { Injectable, Injector } from "@angular/core";
+@Injectable()
 export class AppInjector {
     private static injector: Injector;
 

@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AppComponent } from '../app.component';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { User } from '../models/user';
+import { AuthService } from './auth-service';
 
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
+    private user: User;
+    constructor(private _router: Router, private _auth: AuthService) {
+        this._auth.observedUser.subscribe(
+            data => {
 
-    constructor(private _router: Router, private _app: AppComponent) {
+                console.log('IN AUTH GUARD....');
+                this.user = data;
+            }
+        )
     }
 
     canActivate(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
-        console.log('HEREEEEE');
-        let user: User = this._app.user;
-        console.log(user);
+
+        console.log(this._auth.isUserLoggedIn());
         //check some condition  
         let someCondition: boolean = false;
         if (someCondition) {
